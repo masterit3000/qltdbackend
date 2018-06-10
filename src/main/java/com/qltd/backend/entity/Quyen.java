@@ -14,17 +14,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author MIP
  */
+ @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "quyen", catalog = "tindung", schema = "")
 public class Quyen implements Serializable {
@@ -46,70 +48,7 @@ public class Quyen implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "maQuyen")
     private List<QuyenChucVu> quyenchucvuList;
 
-    public Quyen() {
-    }
-
-    public Quyen(Integer maQuyen) {
-        this.maQuyen = maQuyen;
-    }
-
-    public Quyen(Integer maQuyen, String quyen) {
-        this.maQuyen = maQuyen;
-        this.quyen = quyen;
-    }
-
-    public Integer getMaQuyen() {
-        return maQuyen;
-    }
-
-    public void setMaQuyen(Integer maQuyen) {
-        this.maQuyen = maQuyen;
-    }
-
-    public String getQuyen() {
-        return quyen;
-    }
-
-    public void setQuyen(String quyen) {
-        this.quyen = quyen;
-    }
-
-    public String getMota() {
-        return mota;
-    }
-
-    public void setMota(String mota) {
-        this.mota = mota;
-    }
-
-    public List<QuyenChucVu> getQuyenchucvuList() {
-        return quyenchucvuList;
-    }
-
-    public void setQuyenchucvuList(List<QuyenChucVu> quyenchucvuList) {
-        this.quyenchucvuList = quyenchucvuList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (maQuyen != null ? maQuyen.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Quyen)) {
-            return false;
-        }
-        Quyen other = (Quyen) object;
-        if ((this.maQuyen == null && other.maQuyen != null) || (this.maQuyen != null && !this.maQuyen.equals(other.maQuyen))) {
-            return false;
-        }
-        return true;
-    }
-
+  
     @Override
     public String toString() {
         return "genjpa.Quyen[ maQuyen=" + maQuyen + " ]";

@@ -12,16 +12,18 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author MIP
  */
+ @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "tinh", catalog = "tindung", schema = "")
 public class Tinh implements Serializable {
@@ -39,62 +41,7 @@ public class Tinh implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "maTinh")
     private List<Huyen> huyenList;
 
-    public Tinh() {
-    }
-
-    public Tinh(Integer ma) {
-        this.ma = ma;
-    }
-
-    public Tinh(Integer ma, int ten) {
-        this.ma = ma;
-        this.ten = ten;
-    }
-
-    public Integer getMa() {
-        return ma;
-    }
-
-    public void setMa(Integer ma) {
-        this.ma = ma;
-    }
-
-    public int getTen() {
-        return ten;
-    }
-
-    public void setTen(int ten) {
-        this.ten = ten;
-    }
-
-    public List<Huyen> getHuyenList() {
-        return huyenList;
-    }
-
-    public void setHuyenList(List<Huyen> huyenList) {
-        this.huyenList = huyenList;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (ma != null ? ma.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Tinh)) {
-            return false;
-        }
-        Tinh other = (Tinh) object;
-        if ((this.ma == null && other.ma != null) || (this.ma != null && !this.ma.equals(other.ma))) {
-            return false;
-        }
-        return true;
-    }
-
+  
     @Override
     public String toString() {
         return "genjpa.Tinh[ ma=" + ma + " ]";
